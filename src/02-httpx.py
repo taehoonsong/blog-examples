@@ -16,8 +16,9 @@ class AsyncClient:
         self.api_key = api_key
         self._client = httpx.AsyncClient(base_url="https://api.stlouisfed.org/fred", params={"api_key": self.api_key})
 
-    def _get(self, params: dict, endpoint: str) -> httpx.Response:
-        return self._client.get(params=params, url=endpoint)
+    async def _get(self, params: dict, endpoint: str) -> dict:
+        r: httpx.Response = await self._client.get(params=params, url=endpoint)
+        return json.loads(r.text)
 
     async def get_sp500(self, start_date: dt.datetime, end_date: dt.datetime) -> list[dict]:
         # For sake of this example, let's say this API only allows us to get 30 days of data per request.
@@ -60,7 +61,8 @@ async def main() -> None:
     end_date = dt.datetime(2025, 12, 31)
 
     start_time = perf_counter()
-    _ = await c.get_sp500(start_date, end_date)
+    data = await c.get_sp500(start_date, end_date)
+    print_json(data)
     end_time = perf_counter()
     print(  # noqa: T201
         f"`httpx` took: {end_time - start_time:.1f} seconds to download data from {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}."

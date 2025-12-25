@@ -62,7 +62,8 @@ def main() -> None:
     end_date = dt.datetime(2025, 12, 31)
 
     start_time = perf_counter()
-    _ = c.get_sp500(start_date, end_date)
+    data = c.get_sp500(start_date, end_date)
+    print_json(data)
     end_time = perf_counter()
     print(  # noqa: T201
         f"`requests` took: {end_time - start_time:.1f} seconds to download data from {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}."
