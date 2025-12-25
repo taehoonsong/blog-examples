@@ -58,7 +58,7 @@ def main() -> None:
         raise ImportError("FRED API key is missing. Create a .env file containing a key named FRED_API.")
 
     c = SyncClient(API_KEY)
-    start_date = dt.datetime(2023, 1, 1)
+    start_date = dt.datetime(2025, 1, 1)
     end_date = dt.datetime(2025, 12, 31)
 
     start_time = perf_counter()
