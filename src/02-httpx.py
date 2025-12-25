@@ -14,13 +14,10 @@ API_KEY = dotenv.get_key(".env", key_to_get="FRED_API")
 class AsyncClient:
     def __init__(self, api_key: str) -> None:
         self.api_key = api_key
-        self._client = self.make_client()
-
-    def make_client(self) -> httpx.AsyncClient:
-        return httpx.AsyncClient(base_url="https://api.stlouisfed.org/fred", params={"api_key": self.api_key})
+        self._client = httpx.AsyncClient(base_url="https://api.stlouisfed.org/fred", params={"api_key": self.api_key})
 
     def _get(self, params: dict, endpoint: str) -> httpx.Response:
-        return self._client.get(endpoint, params=params)
+        return self._client.get(params=params, url=endpoint)
 
     async def get_sp500(self, start_date: dt.datetime, end_date: dt.datetime) -> list[dict]:
         # For sake of this example, let's say this API only allows us to get 30 days of data per request.
@@ -31,6 +28,7 @@ class AsyncClient:
         date_diff = rd(end_date, start_date)
         months = date_diff.years * 12 + date_diff.months + 1
 
+        # generate list of query parameters
         all_params = [
             {
                 "series_id": "SP500",
