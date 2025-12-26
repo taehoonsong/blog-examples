@@ -3,6 +3,7 @@ import datetime as dt
 import json
 from functools import partial
 from time import perf_counter
+from typing import Any
 
 import dotenv
 import httpx
@@ -48,7 +49,7 @@ class AsyncClient:
         return result
 
 
-def print_json(data: dict) -> None:
+def print_json(data: Any) -> None:  # noqa: ANN401
     print(json.dumps(data, indent=4))  # noqa: T201
 
 

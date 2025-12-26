@@ -1,6 +1,7 @@
 import datetime as dt
 import json
 from time import perf_counter
+from typing import Any
 
 import dotenv
 import requests
@@ -49,7 +50,7 @@ class SyncClient:
         return result
 
 
-def print_json(data: dict) -> None:
+def print_json(data: Any) -> None:  # noqa: ANN401
     print(json.dumps(data, indent=4))  # noqa: T201
 
 
