@@ -9,7 +9,7 @@ def get_inputs() -> list[str] | None:
         return None
 
     with open(input_file, "r", encoding="utf-8") as f:
-        data = f.read().split("\n")
+        data = f.read().splitlines()
 
     return data
 
