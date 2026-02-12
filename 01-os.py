@@ -1,10 +1,9 @@
 import os
 import contextlib
 
-input_file = "input.txt"
-
 
 def get_inputs() -> list[str] | None:
+    input_file = "input.txt"
     if not os.path.exists(input_file):
         print("Input file does not exist.")
         return None
