@@ -55,6 +55,7 @@ def main() -> None:
     print("Creating files...")
     create_files(data)
     _ = input("Press enter to clean up files.")
+    cleanup()
     print("Deleted all test files.")
 
 
