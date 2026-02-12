@@ -1,1 +1,1 @@
-This repository contains example code for my [blog posts](https://taehoonsong.com/posts/index.html). Each post is its own branch.
+This repository contains example code for my post on [pathlib vs os.path](https://taehoonsong.com/posts/2026-02-12-pathlib-vs-os-path.html).
