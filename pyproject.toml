@@ -1,0 +1,10 @@
+[project]
+name = "pathlib-vs-ospath"
+version = "0.1.0"
+description = "Example code to explore differences between pathlib and os.path"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.ruff.lint]
+ignore = ["PTH"] # Example: Ignore pathlib suggestions
