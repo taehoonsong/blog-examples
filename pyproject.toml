@@ -1,7 +1,7 @@
 [project]
-name = "pathlib-vs-ospath"
+name = "pathlib-vs-os"
 version = "0.1.0"
-description = "Example code to explore differences between pathlib and os.path"
+description = "Example code to explore differences between pathlib and os"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []

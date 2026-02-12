@@ -1,1 +1,1 @@
-This repository contains example code for my post on [pathlib vs os.path](https://taehoonsong.com/posts/2026-02-12-pathlib-vs-os-path.html).
+This repository contains example code for my post on [pathlib vs os](https://taehoonsong.com/posts/2026-02-12-pathlib-vs-os.html).
