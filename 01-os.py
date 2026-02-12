@@ -33,17 +33,17 @@ def create_files(data: list[str]) -> None:
             create_file(item)
 
 
-def cleanup(data: list[str]) -> None:
-    for item in data:
-        if "/" not in item:
-            os.unlink(item)
-            continue
+def cleanup() -> None:
+    for dirpath, dirnames, filenames in os.walk("."):
+        for file in filenames:
+            if "test" not in file:
+                continue
 
-        dir_name, _ = item.split("/")
-        with contextlib.suppress(PermissionError):
-            os.unlink(item)
+            file_path = os.path.join(dirpath, file)
+            os.unlink(file_path)
 
-        os.rmdir(dir_name)
+        if "test" in dirpath:
+            os.rmdir(dirpath)
 
 
 def main() -> None:
@@ -55,7 +55,6 @@ def main() -> None:
     print("Creating files...")
     create_files(data)
     _ = input("Press enter to clean up files.")
-    cleanup(data)
     print("Deleted all test files.")
 
 
