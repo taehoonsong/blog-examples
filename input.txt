@@ -1,0 +1,4 @@
+test1.txt
+test2.txt
+testdir1/
+testdir2/test3.md
